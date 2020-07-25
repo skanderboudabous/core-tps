@@ -50,6 +50,10 @@ public class ColisRecuController {
                         colisRecu.setRegle (newColisRecu.getRegle ());
                     if (newColisRecu.getMontant () != null)
                         colisRecu.setMontant (newColisRecu.getMontant ());
+                    if (newColisRecu.getDate () != null)
+                        colisRecu.setDate (newColisRecu.getDate ());
+                    if (newColisRecu.getTime () != null)
+                        colisRecu.setTime (newColisRecu.getTime ());
                     if (newColisRecu.getNumDest () != null)
                         colisRecu.setNumDest (newColisRecu.getNumDest ());
                     if (newColisRecu.getEtat () != null)
