@@ -1,4 +1,4 @@
-package com.example.demo.controllers;
+package demo.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,18 +25,18 @@ public class SmsController {
 
         String Url_str = "https://bulksms.bipsms.tn/Api/Api.aspx?fct=sms&key=MYKEY&mobile=216XXXXXXXX&sms=Hello+World&sender=YYYYYYY&msg_id=19";
 
-        Url_str = Url_str.replace ("216XXXXXXXX", telephone);
-        Url_str = Url_str.replace ("MYKEY", KEY);
-        Url_str = Url_str.replace ("Hello+World", SMS);
-        Url_str = Url_str.replace ("YYYYYYY", SENDER);
-        HttpClient client = HttpClient.newHttpClient ();
-        HttpRequest request = HttpRequest.newBuilder ()
-                .uri (URI.create (Url_str))
-                .build ();
+        Url_str = Url_str.replace("216XXXXXXXX", telephone);
+        Url_str = Url_str.replace("MYKEY", KEY);
+        Url_str = Url_str.replace("Hello+World", SMS);
+        Url_str = Url_str.replace("YYYYYYY", SENDER);
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(Url_str))
+                .build();
         try {
-            client.send (request, HttpResponse.BodyHandlers.ofString ());
+            client.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException | InterruptedException e) {
-            e.printStackTrace ();
+            e.printStackTrace();
         }
 
 
