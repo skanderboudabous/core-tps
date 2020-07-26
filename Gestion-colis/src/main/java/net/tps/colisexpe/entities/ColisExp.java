@@ -1,4 +1,4 @@
-package com.example.demo.entities;
+package net.tps.colisexpe.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class ColisRecu {
+public class ColisExp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,12 +20,13 @@ public class ColisRecu {
     private String nbr;
     private String regle;
     private Double montant;
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date;
     private String numDest;
-    private EtatColiRecu etat = EtatColiRecu.Attente;
+    private ColisExp.EtatColisExp etatExp = ColisExp.EtatColisExp.Depose;
 
-    public ColisRecu() {
+
+    public ColisExp() {
     }
 
     public Date getDate() {
@@ -36,16 +37,8 @@ public class ColisRecu {
         this.date = date;
     }
 
-    public ColisRecu(String nomExp, String nomDest, String nbr, String regle, Double montant, Date date) {
-        this.nomExp = nomExp;
-        this.nomDest = nomDest;
-        this.nbr = nbr;
-        this.regle = regle;
-        this.montant = montant;
-        this.date = date;
-    }
 
-    public ColisRecu(String nomExp, String nomDest, String nbr, String regle, Double montant, Date date, String numDest, EtatColiRecu etat) {
+    public ColisExp(String nomExp, String nomDest, String nbr, String regle, Double montant, Date date, String numDest, ColisExp.EtatColisExp etatExp) {
         this.nomExp = nomExp;
         this.nomDest = nomDest;
         this.nbr = nbr;
@@ -53,8 +46,9 @@ public class ColisRecu {
         this.montant = montant;
         this.date = date;
         this.numDest = numDest;
-        this.etat = etat;
+        this.etatExp = etatExp;
     }
+
 
     public Long getId() {
         return id;
@@ -112,14 +106,14 @@ public class ColisRecu {
         this.numDest = numDest;
     }
 
-    public EtatColiRecu getEtat() {
-        return etat;
+    public ColisExp.EtatColisExp getEtatExp() {
+        return etatExp;
     }
 
-    public void setEtat(EtatColiRecu etat) {
-        this.etat = etat;
+    public void setEtatExp(ColisExp.EtatColisExp etatExp) {
+        this.etatExp = etatExp;
     }
 
-
-    public enum EtatColiRecu {Attente, Validé, Echoué}
+    public enum EtatColisExp {Depose, charge}
 }
+

@@ -1,13 +1,12 @@
-package com.example.demo;
+package net.tps.colisexpe;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 @SpringBootApplication
-public class DemoApplication {
 
+public class ColisExpApplication {
     public static void main(String[] args) {
-        SpringApplication.run (DemoApplication.class, args);
+        SpringApplication.run(ColisExpApplication.class, args);
     }
-
 }
