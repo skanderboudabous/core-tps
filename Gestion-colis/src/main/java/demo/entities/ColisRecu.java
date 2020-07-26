@@ -14,44 +14,58 @@ public class ColisRecu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nomExp;
     private String nomDest;
     private String nbr;
     private String regle;
     private Double montant;
+<<<<<<< HEAD:Gestion-colis/src/main/java/demo/entities/ColisRecu.java
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date date;
+=======
+    private String date;
+    private String time;
+>>>>>>> ee416f626c6f6c1e4b804e48319d53b7fef49d6e:src/main/java/com/example/demo/entities/ColisRecu.java
     private String numDest;
     private EtatColiRecu etat = EtatColiRecu.Attente;
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     public ColisRecu() {
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public ColisRecu(String nomExp, String nomDest, String nbr, String regle, Double montant, Date date) {
+    public ColisRecu(String nomExp, String nomDest, String nbr, String regle, Double montant, String date, String time) {
         this.nomExp = nomExp;
         this.nomDest = nomDest;
         this.nbr = nbr;
         this.regle = regle;
         this.montant = montant;
         this.date = date;
+        this.time = time;
     }
 
-    public ColisRecu(String nomExp, String nomDest, String nbr, String regle, Double montant, Date date, String numDest, EtatColiRecu etat) {
+    public ColisRecu(String nomExp, String nomDest, String nbr, String regle, Double montant, String date, String time, String numDest, EtatColiRecu etat) {
         this.nomExp = nomExp;
         this.nomDest = nomDest;
         this.nbr = nbr;
         this.regle = regle;
         this.montant = montant;
         this.date = date;
+        this.time = time;
         this.numDest = numDest;
         this.etat = etat;
     }
