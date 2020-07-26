@@ -1,17 +1,11 @@
 package com.example.demo.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
-import java.util.UUID;
 
 @Entity
-public class ColisRecu {
+public class ColisExp {
 
     @Id
     private String id;
@@ -22,20 +16,13 @@ public class ColisRecu {
     private String montant;
     private String date;
     private String numDest;
-    private EtatColiRecu etat = EtatColiRecu.Attente;
+    private EtatColisExp etat = EtatColisExp.Depose;
 
-    public ColisRecu() {
-    }
 
-    public String getDate() {
-        return date;
-    }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public ColisRecu(String nomExp, String nomDest, String nbr, String regle, String montant, String date) {
+    public ColisExp(){}
+    public ColisExp(String id,String nomExp, String nomDest, String nbr, String regle, String montant, String date) {
+        this.id=id;
         this.nomExp = nomExp;
         this.nomDest = nomDest;
         this.nbr = nbr;
@@ -43,8 +30,8 @@ public class ColisRecu {
         this.montant = montant;
         this.date = date;
     }
-
-    public ColisRecu(String nomExp, String nomDest, String nbr, String regle, String montant, String date, String numDest, EtatColiRecu etat) {
+    public ColisExp(String nomExp, String nomDest, String nbr, String regle, String montant, String date, String numDest, EtatColisExp etat) {
+        this.id=id;
         this.nomExp = nomExp;
         this.nomDest = nomDest;
         this.nbr = nbr;
@@ -54,6 +41,14 @@ public class ColisRecu {
         this.numDest = numDest;
         this.etat = etat;
     }
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
 
     public String getId() {
         return id;
@@ -111,14 +106,13 @@ public class ColisRecu {
         this.numDest = numDest;
     }
 
-    public EtatColiRecu getEtat() {
+    public ColisExp.EtatColisExp getEtat() {
         return etat;
     }
 
-    public void setEtat(EtatColiRecu etat) {
+    public void setEtat(ColisExp.EtatColisExp etat) {
         this.etat = etat;
     }
 
-
-    public enum EtatColiRecu {Attente, Validé, Echoué}
+    public enum EtatColisExp {Depose, charge}
 }

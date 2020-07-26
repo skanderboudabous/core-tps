@@ -1,44 +1,33 @@
-package net.tps.colisexpe.entities;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+package com.example.demo.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
 
 @Entity
-public class ColisExp {
-
+public class ColisRecu {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private String id;
     private String nomExp;
     private String nomDest;
     private String nbr;
     private String regle;
-    private Double montant;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date date;
+    private String montant;
+    private String date;
     private String numDest;
-    private ColisExp.EtatColisExp etatExp = ColisExp.EtatColisExp.Depose;
+    private EtatColiRecu etat = EtatColiRecu.Attente;
 
-
-    public ColisExp() {
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
+    public ColisRecu(){}
+    public ColisRecu(String id,String nomExp, String nomDest, String nbr, String regle, String montant, String date) {
+        this.id=id;
+        this.nomExp = nomExp;
+        this.nomDest = nomDest;
+        this.nbr = nbr;
+        this.regle = regle;
+        this.montant = montant;
         this.date = date;
     }
-
-
-    public ColisExp(String nomExp, String nomDest, String nbr, String regle, Double montant, Date date, String numDest, ColisExp.EtatColisExp etatExp) {
+    public ColisRecu(String nomExp, String nomDest, String nbr, String regle, String montant, String date, String numDest, EtatColiRecu etat) {
+        this.id=id;
         this.nomExp = nomExp;
         this.nomDest = nomDest;
         this.nbr = nbr;
@@ -46,15 +35,14 @@ public class ColisExp {
         this.montant = montant;
         this.date = date;
         this.numDest = numDest;
-        this.etatExp = etatExp;
+        this.etat = etat;
     }
 
-
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -90,12 +78,20 @@ public class ColisExp {
         this.regle = regle;
     }
 
-    public Double getMontant() {
+    public String getMontant() {
         return montant;
     }
 
-    public void setMontant(Double montant) {
+    public void setMontant(String montant) {
         this.montant = montant;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getNumDest() {
@@ -106,14 +102,15 @@ public class ColisExp {
         this.numDest = numDest;
     }
 
-    public ColisExp.EtatColisExp getEtatExp() {
-        return etatExp;
+    public EtatColiRecu getEtat() {
+        return etat;
     }
 
-    public void setEtatExp(ColisExp.EtatColisExp etatExp) {
-        this.etatExp = etatExp;
+    public void setEtat(EtatColiRecu etat) {
+        this.etat = etat;
     }
 
-    public enum EtatColisExp {Depose, charge}
+    public enum EtatColiRecu {Attente, Validé, Echoué}
+
+
 }
-
