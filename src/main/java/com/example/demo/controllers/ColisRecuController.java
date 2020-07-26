@@ -5,6 +5,7 @@ import com.example.demo.repositories.ColisRecuRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RequestMapping(value = "/colisrecu")
 @RestController()
 public class ColisRecuController {
@@ -22,21 +23,26 @@ public class ColisRecuController {
 
     @PostMapping("/add")
     ColisRecu newColisRecu(@RequestBody ColisRecu newColisRecu) {
+        if(colisRecuRepository.existsById (newColisRecu.getId ()))
+            return null;
         return colisRecuRepository.save (newColisRecu);
     }
 
-    // Single item
+    @PostMapping("/addAll")
+    List<ColisRecu> newColisRecu(@RequestBody List<ColisRecu> newColisRecus) {
+        return colisRecuRepository.saveAll (newColisRecus);
+    }
+
 
     @GetMapping("/{id}")
-    ColisRecu one(@PathVariable Long id) {
-        if (colisRecuRepository.findById (id).isPresent ()) {
+    ColisRecu one(@PathVariable String id) {
+        if (colisRecuRepository.findById (id).isPresent ())
             return colisRecuRepository.findById (id).get ();
-        }
         return null;
     }
 
     @PutMapping("/{id}")
-    ColisRecu replaceColisRecu(@RequestBody ColisRecu newColisRecu, @PathVariable Long id) {
+    ColisRecu replaceColisRecu(@RequestBody ColisRecu newColisRecu, @PathVariable String id) {
 
         return colisRecuRepository.findById (id)
                 .map (colisRecu -> {
@@ -52,8 +58,6 @@ public class ColisRecuController {
                         colisRecu.setMontant (newColisRecu.getMontant ());
                     if (newColisRecu.getDate () != null)
                         colisRecu.setDate (newColisRecu.getDate ());
-                    if (newColisRecu.getTime () != null)
-                        colisRecu.setTime (newColisRecu.getTime ());
                     if (newColisRecu.getNumDest () != null)
                         colisRecu.setNumDest (newColisRecu.getNumDest ());
                     if (newColisRecu.getEtat () != null)
@@ -66,8 +70,8 @@ public class ColisRecuController {
                 });
     }
 
-    @DeleteMapping("/ColisRecus/{id}")
-    void deleteColisRecu(@PathVariable Long id) {
+    @DeleteMapping("/delete/{id}")
+    void deleteColisRecu(@PathVariable String id) {
         colisRecuRepository.deleteById (id);
     }
 }

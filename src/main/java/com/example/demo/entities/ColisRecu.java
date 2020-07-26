@@ -1,36 +1,28 @@
 package com.example.demo.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 public class ColisRecu {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     private String nomExp;
     private String nomDest;
     private String nbr;
     private String regle;
-    private Double montant;
+    private String montant;
     private String date;
-    private String time;
     private String numDest;
     private EtatColiRecu etat = EtatColiRecu.Attente;
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 
     public ColisRecu() {
     }
@@ -43,33 +35,31 @@ public class ColisRecu {
         this.date = date;
     }
 
-    public ColisRecu(String nomExp, String nomDest, String nbr, String regle, Double montant, String date, String time) {
+    public ColisRecu(String nomExp, String nomDest, String nbr, String regle, String montant, String date) {
         this.nomExp = nomExp;
         this.nomDest = nomDest;
         this.nbr = nbr;
         this.regle = regle;
         this.montant = montant;
         this.date = date;
-        this.time = time;
     }
 
-    public ColisRecu(String nomExp, String nomDest, String nbr, String regle, Double montant, String date, String time, String numDest, EtatColiRecu etat) {
+    public ColisRecu(String nomExp, String nomDest, String nbr, String regle, String montant, String date, String numDest, EtatColiRecu etat) {
         this.nomExp = nomExp;
         this.nomDest = nomDest;
         this.nbr = nbr;
         this.regle = regle;
         this.montant = montant;
         this.date = date;
-        this.time = time;
         this.numDest = numDest;
         this.etat = etat;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -105,11 +95,11 @@ public class ColisRecu {
         this.regle = regle;
     }
 
-    public Double getMontant() {
+    public String getMontant() {
         return montant;
     }
 
-    public void setMontant(Double montant) {
+    public void setMontant(String montant) {
         this.montant = montant;
     }
 
