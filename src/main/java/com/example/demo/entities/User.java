@@ -8,6 +8,13 @@ import java.util.UUID;
 @Entity
 public class User {
     @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    private String id;
+    @Column(unique = true)
     private String email;
     private String password;
     private Role role=Role.User;
@@ -24,6 +31,13 @@ public class User {
         this.role = role;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getEmail() {
         return email;
@@ -50,4 +64,5 @@ public class User {
     }
 
     public enum Role{User,Admin}
+    //TODO:Caissié,Depot
 }
