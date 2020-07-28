@@ -3,8 +3,7 @@ package com.example.demo.entities;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.UUID;
-
+@Table(name = "user")
 @Entity
 public class User {
     @Id
@@ -17,7 +16,8 @@ public class User {
     @Column(unique = true)
     private String email;
     private String password;
-    private Role role=Role.User;
+    private Role role=Role.Caissié;
+
     public User(){}
 
     public User(String email, String password) {
@@ -63,6 +63,5 @@ public class User {
         this.role = role;
     }
 
-    public enum Role{User,Admin}
-    //TODO:Caissié,Depot
+    public enum Role{Caissié,Depot}
 }

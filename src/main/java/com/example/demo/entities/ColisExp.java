@@ -3,7 +3,9 @@ package com.example.demo.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Table(name = "colis_exp")
 @Entity
 public class ColisExp {
 
@@ -16,13 +18,14 @@ public class ColisExp {
     private String montant;
     private String date;
     private String numDest;
-    private EtatColisExp etat = EtatColisExp.Depose;
+    private EtatColisExp etat = EtatColisExp.Deposé;
 
 
+    public ColisExp() {
+    }
 
-    public ColisExp(){}
-    public ColisExp(String id,String nomExp, String nomDest, String nbr, String regle, String montant, String date) {
-        this.id=id;
+    public ColisExp(String id, String nomExp, String nomDest, String nbr, String regle, String montant, String date) {
+        this.id = id;
         this.nomExp = nomExp;
         this.nomDest = nomDest;
         this.nbr = nbr;
@@ -30,8 +33,9 @@ public class ColisExp {
         this.montant = montant;
         this.date = date;
     }
+
     public ColisExp(String nomExp, String nomDest, String nbr, String regle, String montant, String date, String numDest, EtatColisExp etat) {
-        this.id=id;
+        this.id = id;
         this.nomExp = nomExp;
         this.nomDest = nomDest;
         this.nbr = nbr;
@@ -41,14 +45,6 @@ public class ColisExp {
         this.numDest = numDest;
         this.etat = etat;
     }
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
 
     public String getId() {
         return id;
@@ -98,6 +94,14 @@ public class ColisExp {
         this.montant = montant;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public String getNumDest() {
         return numDest;
     }
@@ -106,13 +110,14 @@ public class ColisExp {
         this.numDest = numDest;
     }
 
-    public ColisExp.EtatColisExp getEtat() {
+    public EtatColisExp getEtat() {
         return etat;
     }
 
-    public void setEtat(ColisExp.EtatColisExp etat) {
+    public void setEtat(EtatColisExp etat) {
         this.etat = etat;
     }
 
-    public enum EtatColisExp {Depose, charge}
+    public enum EtatColisExp {Deposé, Chargé}
+
 }

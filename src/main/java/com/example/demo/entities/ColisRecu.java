@@ -2,7 +2,9 @@ package com.example.demo.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Table(name = "colis_recu")
 @Entity
 public class ColisRecu {
     @Id
